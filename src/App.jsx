@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import SplashScreen from "./pages/SplashScreen";
-import Error from "./pages/Error";
 function App() {
  
   const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
@@ -30,7 +29,7 @@ function App() {
     <Router>
       <Routes>
         {storedToken ? (
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home setStoredToken={setStoredToken} />} />
         ) : (
             <>
               <Route path="/" element={<SplashScreen />} />
@@ -41,7 +40,7 @@ function App() {
                 setStoredToken={setStoredToken} />} />
             </>
         )}
-        <Route path="*" element={<Error />} />
+       
       </Routes>
 
 

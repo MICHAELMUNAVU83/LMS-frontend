@@ -1,8 +1,17 @@
 import React from 'react'
 
-const Home = () => {
+const Home = ({setStoredToken}) => {
   return (
-    <div>Home</div>
+    <div>
+       <button
+        onClick={() => {
+          localStorage.setItem("token", "");
+          setStoredToken("");
+        }}
+      >
+        Log out
+      </button>
+    </div>
   )
 }
 
