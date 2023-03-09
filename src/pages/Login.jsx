@@ -95,7 +95,7 @@ function Login({ setStoredToken }) {
                     </label>
                   </div>
                   <div className="relative">
-                    <button className="bg-blue-500 text-white rounded-md px-2 py-1">
+                    <button className="bg-blue-500 text-white rounded-md px-2 py-1" onClick={handleSubmit}>
                       Submit
                     </button>
                   </div>
@@ -104,6 +104,7 @@ function Login({ setStoredToken }) {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </>
   );

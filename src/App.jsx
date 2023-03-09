@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import SignUp from "./pages/SignUp";
 import SplashScreen from "./pages/SplashScreen";
 function App() {
  
@@ -34,7 +34,7 @@ function App() {
             <>
               <Route path="/" element={<SplashScreen />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+              <Route path="/signup" element={<SignUp />} />
             </>
         )}
       </Routes>

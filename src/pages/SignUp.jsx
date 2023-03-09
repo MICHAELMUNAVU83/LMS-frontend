@@ -13,30 +13,11 @@ const SignUp = ({ setStoredToken }) => {
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
   const [email, setEmail] = useState("");
-  const [county, setCounty] = useState("");
-  const [constituency, setConstituency] = useState("");
+  
   const [profile_picture, setProfilePicture] = useState("");
-  const [gender, setGender] = useState("");
-  const [counties, setCounties] = useState([]);
-  const [constituencies, setConstituencies] = useState([]);
+ 
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:3000/counties")
-      .then((response) => response.json())
-      .then((data) => {
-        setCounties(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch(`http://127.0.0.1:3000/counties/${county}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.constituencies) {
-          setConstituencies(data.constituencies);
-        }
-      });
-  }, [county]);
+  
 
   const uploadProfilePicture = (files) => {
     const formData = new FormData();
@@ -62,14 +43,16 @@ const SignUp = ({ setStoredToken }) => {
       },
       body: JSON.stringify({
         user: {
-          username,
+          
+          first_name,
+          last_name,
+
           password,
           password_confirmation,
           email,
-          county,
-          constituency,
+    
           profile_picture,
-          gender,
+          
         },
       }),
     })
