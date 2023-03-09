@@ -46,11 +46,9 @@ const SignUp = ({ setStoredToken }) => {
           
           first_name,
           last_name,
-
           password,
           password_confirmation,
           email,
-    
           profile_picture,
           
         },
@@ -58,6 +56,7 @@ const SignUp = ({ setStoredToken }) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.jwt) {
           localStorage.setItem("token", data.jwt);
           setStoredToken(data.jwt);

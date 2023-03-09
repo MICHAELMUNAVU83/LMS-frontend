@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import SplashScreen from "./pages/SplashScreen";
+import Error from "./pages/Error";
 function App() {
  
   const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
@@ -33,10 +34,14 @@ function App() {
         ) : (
             <>
               <Route path="/" element={<SplashScreen />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login 
+                setStoredToken={setStoredToken}   />} />
+              <Route path="/signup" element={<SignUp  
+
+                setStoredToken={setStoredToken} />} />
             </>
         )}
+        <Route path="*" element={<Error />} />
       </Routes>
 
 
