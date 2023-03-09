@@ -55,7 +55,8 @@ const Home = ({ setStoredToken }) => {
           </div>
         </div>
       </div>
-      <div className="w-5/6 bg-black">opl;</div>
+      <div className="w-4/6 bg-black">opl;</div>
+      <div className="w-2/6 bg-red-600">opl;</div>
     </div>
   );
 };
