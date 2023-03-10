@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react'
 import Sidebar from "../components/StudentDashboard/Sidebar";
 import Profile from "../components/StudentDashboard/Profile";
 import HomeDashboard from "../components/StudentDashboard/HomeDashboard";
 
 const Home = ({ setStoredToken }) => {
+  
+
   return (
     <div className="flex">
       <div className="w-1/6 h-[100vh] ">

@@ -3,6 +3,8 @@ import moment from "moment";
 import { IoIosArrowForward } from "react-icons/io";
 const HomeDashboard = () => {
   const [new_courses, setNewCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [filterQuery, setFilterQuery] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/new_courses")
@@ -11,6 +13,22 @@ const HomeDashboard = () => {
         setNewCourses(data);
       });
   }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/courses")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!filterQuery) {
+          setCourses(data);
+        } else {
+          setCourses(
+            data.filter((course) =>
+              course.name.toLowerCase().includes(filterQuery.toLowerCase())
+            )
+          );
+        }
+      });
+  }, [filterQuery]);
 
   return (
     <div>
@@ -48,7 +66,8 @@ const HomeDashboard = () => {
                 id="default-search"
                 class="block w-full p-4 pl-10 text-sm  border border-gray-200 rounded-lg text-black focus:ring-blue-500 focus:border-blue-500 w-[300px] h-2 dark:border-gray-600  "
                 placeholder="Search.."
-                required
+                value={filterQuery}
+                onChange={(e) => setFilterQuery(e.target.value)}
               />
             </div>
           </form>
@@ -77,6 +96,56 @@ const HomeDashboard = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <h1 className="text-2xl font-bold mt-12">My Courses</h1>
+
+      <div class="relative overflow-x-auto mt-2">
+        <table class="w-full text-sm text-left text-gray-500 text-gray-400">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
+            <tr>
+              <th scope="col" class="px-6 py-3">
+                Course Name
+              </th>
+
+              <th scope="col" class="px-6 py-3">
+                Start Date
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Level
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {courses.map((course) => (
+              <tr class="bg-white text-black border-b ">
+                <th
+                  scope="row"
+                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                >
+                  <div className="flex gap-2">
+                    <div className=" p-2 rounded-lg bg-red-500">
+                      <img
+                        src="https://images.unsplash.com/photo-1565884280295-98eb83e41c65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                        alt="course"
+                        className="w-10 h-10 rounded-lg"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h1 className="text-lg font-bold">{course.name}</h1>
+                      <h1 className="text-sm">{course.lessons} Lessons</h1>
+                    </div>
+                  </div>
+                </th>
+                <td class="px-6 py-4">
+                  {moment(course.start_date).format("MMM Do")}
+                </td>
+
+                <td class="px-6 py-4">{course.level}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
