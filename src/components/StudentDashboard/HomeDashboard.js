@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import moment from "moment";
+import { IoIosArrowForward } from "react-icons/io";
 const HomeDashboard = () => {
   const [new_courses, setNewCourses] = useState([]);
 
@@ -57,14 +58,23 @@ const HomeDashboard = () => {
 
       <div className="flex justify-around mt-5">
         {new_courses.map((course) => (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 bg-red-600 h-[300px] w-[250px] rounded-xl p-4">
             <img
-              src={course.cover_image}
+              src="https://images.unsplash.com/photo-1565884280295-98eb83e41c65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
               alt="course"
-              className="w-40 h-40 rounded-lg"
+              className="w-[90%] h-40 mx-auto rounded-lg"
             />
-            <h1 className="text-xl font-bold">{course.name}</h1>
-            <h1 className="text-lg">{course.lessons}</h1>
+            <h1 className="text-xl pl-4 font-bold">{course.name}</h1>
+            <h1 className="text-lg pl-4">
+              {course.lessons}
+              {""} Lessons
+            </h1>
+
+            <div className="flex justify-end ">
+              <div className="p-2 cursor-pointer bg-white rounded-2xl">
+                <IoIosArrowForward className="text-2xl text-black " />
+              </div>
+            </div>
           </div>
         ))}
       </div>
