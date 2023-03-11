@@ -21,6 +21,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setRole(data.user.role);
         console.log(data.user.role);
       });
