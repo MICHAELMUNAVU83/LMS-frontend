@@ -14,6 +14,7 @@ import {
   startOfToday,
 } from "date-fns";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -44,7 +45,9 @@ export default function Example() {
     <div className="pt-16 flex flex-col  h-full">
       <div className="flex mt-4 justify-around text-3xl">
         <h1>Profile</h1>
-        <AiFillEdit />
+        <Link to="/edit-profile-picture">
+          <AiFillEdit className="cursor-pointer" />
+        </Link>
       </div>
 
       <div className="flex flex-col mx-auto justify-center   mt-5">

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import SplashScreen from "./pages/SplashScreen";
+import EditProfilePicture from "./pages/EditProfilePicture";
 function App() {
  
   const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
@@ -29,7 +30,10 @@ function App() {
     <Router>
       <Routes>
         {storedToken ? (
-          <Route path="/" element={<Home setStoredToken={setStoredToken} />} />
+          <>
+            <Route path="/" element={<Home setStoredToken={setStoredToken} />} />
+            <Route path="/edit-profile-picture" element={<EditProfilePicture />} />
+            </>
         ) : (
             <>
               <Route path="/" element={<SplashScreen />} />
