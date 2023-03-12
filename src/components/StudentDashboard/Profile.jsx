@@ -36,7 +36,7 @@ export default function Example() {
         setUser(data.user);
         console.log("profile", data.user);
       });
-  }, [user && user.profile_picture]);
+  }, [user]);
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));

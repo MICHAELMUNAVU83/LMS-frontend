@@ -16,7 +16,7 @@ const EditProfilePicture = () => {
       .then((data) => {
         setUser(data.user);
       });
-  }, [user && user.profile_picture]);
+  }, [user.profile_picture]);
   const uploadImage = (files) => {
     const formData = new FormData();
     formData.append("file", files[0]);
@@ -53,13 +53,9 @@ const EditProfilePicture = () => {
   return (
     <div className="bg-gray-100 h-full fixed w-[100%] justify-center">
       {updatedPicture ? (
-        <img src={updatedPicture} alt="profile picture" className="w-40 h-40" />
+        <img src={updatedPicture} alt="profile " className="w-40 h-40" />
       ) : (
-        <img
-          src={user.profile_picture}
-          alt="profile picture"
-          className="w-40 h-40"
-        />
+        <img src={user.profile_picture} alt="profile" className="w-40 h-40" />
       )}
       <input
         type="file"
